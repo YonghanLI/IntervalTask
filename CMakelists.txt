@@ -1,0 +1,19 @@
+# CMake 最低版本号要求
+cmake_minimum_required (VERSION 3.0)
+
+# 项目信息
+project (Demo1)
+
+include (FindPkgConfig)
+pkg_search_module (IBEX REQUIRED ibex)
+message (STATUS "Found Ibex version ${IBEX_VERSION}")
+
+add_compile_options(-O3 -DNDEBUG)
+
+
+# 指定生成目标
+add_executable(searchdemo searchdemo.cpp)
+
+target_compile_options (searchdemo PUBLIC ${IBEX_CFLAGS})
+target_include_directories (searchdemo PUBLIC ${IBEX_INCLUDE_DIRS})
+target_link_libraries (searchdemo PUBLIC ibex ginac gaol gdtoa ultim ${IBEX_LDFLAGS})

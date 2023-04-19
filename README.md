@@ -6,4 +6,4 @@ cmake ..
 
 make
 
-./searchdemo
+./valdemo
